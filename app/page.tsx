@@ -1,12 +1,19 @@
-import FavoriteComponent from "@/components/FavoriteComponent";
-import MoviesComponent from "@/components/MoviesComponent";
+"use client";
+
+import FavoritesComponent from "@/components/FavoritesComponents/FavoritesComponent";
+import { ModalComponent } from "@/components/ModalComponent";
+import MoviesComponent from "@/components/MoviesComponents/MoviesComponent";
+import { GalleryContext } from "@/context/GalleryContext";
+import { useContext } from "react";
 
 export default function Home() {
+  const { detailedMovie } = useContext(GalleryContext);
+
   return (
     <>
       <MoviesComponent />
-
-      <FavoriteComponent />
+      <FavoritesComponent />
+      {detailedMovie && <ModalComponent id={detailedMovie} />}
     </>
   );
 }

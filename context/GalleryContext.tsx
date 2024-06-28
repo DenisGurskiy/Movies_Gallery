@@ -4,15 +4,19 @@ import { Movie } from "@/type/movie";
 import React, { useEffect, useState } from "react";
 
 type Context = {
-  favourites: Movie[];
-  addToFavourites: (movie: Movie) => void;
-  deleteFromFavourites: (movie: Movie) => void;
+  detailedMovie: number | null;
+  setDetailedMovie: (id: number | null) => void;
+  favorites: Movie[];
+  addTofavorites: (movie: Movie) => void;
+  deleteFromfavorites: (movie: Movie) => void;
 };
 
 export const GalleryContext = React.createContext<Context>({
-  favourites: [],
-  addToFavourites: () => {},
-  deleteFromFavourites: () => {},
+  detailedMovie: null,
+  setDetailedMovie: () => {},
+  favorites: [],
+  addTofavorites: () => {},
+  deleteFromfavorites: () => {},
 });
 
 type Props = {
@@ -20,17 +24,18 @@ type Props = {
 };
 
 export const GalleryProvider: React.FC<Props> = ({ children }) => {
-  const [favourites, setFavourites] = useState<Movie[]>([]);
+  const [favorites, setfavorites] = useState<Movie[]>([]);
   const [isHydrated, setIsHydrated] = useState(false);
+  const [detailedMovie, setDetailedMovie] = useState<number | null>(null);
 
-  const deleteFromFavourites = (currentMovie: Movie) => {
-    setFavourites((currentMovies) =>
+  const deleteFromfavorites = (currentMovie: Movie) => {
+    setfavorites((currentMovies) =>
       currentMovies.filter((movie) => movie !== currentMovie)
     );
   };
 
-  const addToFavourites = (newMovie: Movie) => {
-    setFavourites((currentMovies) => {
+  const addTofavorites = (newMovie: Movie) => {
+    setfavorites((currentMovies) => {
       if (currentMovies.some((movie) => movie.id === newMovie.id)) {
         return currentMovies.filter((movie) => movie.id !== newMovie.id);
       } else {
@@ -41,9 +46,9 @@ export const GalleryProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     try {
-      const storedFavourites = localStorage.getItem("favourites");
-      if (storedFavourites) {
-        setFavourites(JSON.parse(storedFavourites));
+      const storedfavorites = localStorage.getItem("favorites");
+      if (storedfavorites) {
+        setfavorites(JSON.parse(storedfavorites));
       }
       setIsHydrated(true);
     } catch (error) {
@@ -54,17 +59,19 @@ export const GalleryProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (isHydrated) {
       try {
-        localStorage.setItem("favourites", JSON.stringify(favourites));
+        localStorage.setItem("favorites", JSON.stringify(favorites));
       } catch (error) {
         console.error("Error writing to localStorage", error);
       }
     }
-  }, [favourites, isHydrated]);
+  }, [favorites, isHydrated]);
 
   const objectContext = {
-    favourites,
-    addToFavourites,
-    deleteFromFavourites,
+    detailedMovie,
+    setDetailedMovie,
+    favorites,
+    addTofavorites,
+    deleteFromfavorites,
   };
 
   return (

@@ -1,7 +1,7 @@
 import { Movie } from "@/type/movie";
 import useSWR from "swr";
-import Skeleton from "./Skeleton";
 import { MovieComponent } from "./MovieComponent";
+import Skeleton from "../UI/Skeleton";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -14,17 +14,17 @@ export default function MoviesListComponent() {
   if (error) return <div>Failed to load</div>;
   if (!movies)
     return (
-      <div>
+      <ul className="grid  grid-cols-12 gap-[12px]">
         <Skeleton />
         <Skeleton />
         <Skeleton />
-      </div>
+      </ul>
     );
 
   return (
-    <ul className="grid  grid-cols-12 gap-[12px]">
+    <ul className="grid grid-cols-12 gap-[12px]">
       {movies.map((movie) => (
-        <MovieComponent key={movie.id} movie={movie} />       
+        <MovieComponent key={movie.id} movie={movie} />
       ))}
     </ul>
   );

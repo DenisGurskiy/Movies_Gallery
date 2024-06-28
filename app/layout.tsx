@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <GalleryProvider>          
+        <GalleryProvider>
           <main className="pt-[40px] md:pt-[24px] grid grid-cols-1 md:grid-cols-12 gap-[24px] md:px-[24px] max-w-[1200px] m-auto">
             {children}
           </main>
