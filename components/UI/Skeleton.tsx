@@ -1,6 +1,6 @@
 export default function Skeleton() {
   return (
-    <li className="col-span-6 ss:col-span-4 animate-pulse">
+    <li className="col-span-6 ss:col-span-4 lg:col-span-3 animate-pulse">
       <div className="h-[300px] rounded-md overflow-hidden p-[12px] shadow-md shadow-gray-300 text-[12px] ">
         <div className="relative w-full h-[200px] mb-[8px] bg-gray-200"></div>
         <div>

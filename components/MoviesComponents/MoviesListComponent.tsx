@@ -22,7 +22,7 @@ const MoviesListComponent = () => {
   if (error) return <div>Failed to load</div>;
   if (!movies)
     return (
-      <ul className="grid  grid-cols-12 gap-[12px]">
+      <ul className="grid grid-cols-12 gap-[12px]">
         <Skeleton />
         <Skeleton />
         <Skeleton />
@@ -32,16 +32,20 @@ const MoviesListComponent = () => {
   const allGenres = new Set<string>();
   movies.forEach((movie) => {
     movie.genres.forEach((genre) => {
-      allGenres.add(genre);
+      allGenres.add(genre.toLowerCase());
     });
   });
 
   const genresArray = Array.from(allGenres).sort();
 
   const filteredMovies =
-    value === "select genre"
+    value.toLowerCase() === "select genre"
       ? movies
-      : movies.filter((movie) => movie.genres.includes(value));
+      : movies.filter((movie) =>
+          movie.genres.some(
+            (genre) => genre.toLowerCase() === value.toLowerCase()
+          )
+        );
 
   return (
     <>
@@ -64,7 +68,7 @@ const MoviesListComponent = () => {
           {genresArray.length !== 0 &&
             genresArray.map((genre) => (
               <option className="text-black" key={genre} value={genre}>
-                {genre}
+                {genre.charAt(0).toUpperCase() + genre.slice(1)}
               </option>
             ))}
         </select>
