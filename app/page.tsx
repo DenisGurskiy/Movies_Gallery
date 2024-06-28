@@ -2,7 +2,7 @@
 
 import FavoritesComponent from "@/components/FavoritesComponents/FavoritesComponent";
 import { ModalComponent } from "@/components/ModalComponent";
-import MoviesComponent from "@/components/MoviesComponents/MoviesComponent";
+import { MoviesComponent } from "@/components/MoviesComponents/MoviesComponent";
 import { GalleryContext } from "@/context/GalleryContext";
 import { useContext } from "react";
 
