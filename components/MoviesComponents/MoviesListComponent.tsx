@@ -22,10 +22,21 @@ export default function MoviesListComponent() {
     );
 
   return (
-    <ul className="grid grid-cols-12 gap-[12px]">
-      {movies.map((movie) => (
-        <MovieComponent key={movie.id} movie={movie} />
-      ))}
-    </ul>
+    <>
+      <div>
+        <select name="genre" id="genre">
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </div>
+      <ul className="grid grid-cols-12 gap-[12px]">
+        {movies.map((movie) => (
+          <MovieComponent key={movie.id} movie={movie} />
+        ))}
+      </ul>
+    </>
   );
 }

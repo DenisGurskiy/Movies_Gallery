@@ -87,7 +87,7 @@ export const ModalComponent: FC<Props> = ({ id }) => {
           </div>
           <Button
             onClick={() => setDetailedMovie(null)}
-            classnames="absolute top-[24px] right-[24px]"
+            classnames="absolute top-[8px] right-[8px] md:top-[24px] md:right-[24px]"
           >
             <CloseModal />
           </Button>
