@@ -7,6 +7,7 @@ type Context = {
   detailedMovie: number | null;
   setDetailedMovie: (id: number | null) => void;
   favorites: Movie[];
+  isfavorite: (movie: Movie) => boolean;
   addTofavorites: (movie: Movie) => void;
   deleteFromfavorites: (movie: Movie) => void;
 };
@@ -15,6 +16,7 @@ export const GalleryContext = React.createContext<Context>({
   detailedMovie: null,
   setDetailedMovie: () => {},
   favorites: [],
+  isfavorite: () => false,
   addTofavorites: () => {},
   deleteFromfavorites: () => {},
 });
@@ -66,10 +68,15 @@ export const GalleryProvider: React.FC<Props> = ({ children }) => {
     }
   }, [favorites, isHydrated]);
 
+  const isfavorite = (movie: Movie) => {
+    return favorites.some((favMovie) => favMovie.id === movie.id);
+  };
+
   const objectContext = {
     detailedMovie,
     setDetailedMovie,
     favorites,
+    isfavorite,
     addTofavorites,
     deleteFromfavorites,
   };

@@ -22,7 +22,7 @@ export const ModalComponent: FC<Props> = ({ id }) => {
     fetcher
   );
 
-  const { setDetailedMovie, favorites, addTofavorites } =
+  const { setDetailedMovie, isfavorite, addTofavorites } =
     useContext(GalleryContext);
 
   useEffect(() => {
@@ -36,15 +36,13 @@ export const ModalComponent: FC<Props> = ({ id }) => {
   if (error) return <div>Failed to load</div>;
   if (!movie) return <ModalSkeleton />;
 
-  const isfavorite = favorites.some((favMovie) => favMovie.id === movie.id);
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
         className="fixed inset-0 bg-black bg-opacity-50"
         onClick={() => setDetailedMovie(null)}
       ></div>
-      <div className="max-w-[640px] w-auto h-auto absolute bg-white z-50 md:rounded-[4px] md:p-[48px] p-[20px] m-[12px]">
+      <div className="max-w-[640px] w-auto h-auto absolute bg-white z-50 rounded-[12px] md:p-[48px] p-[20px] m-[12px]">
         <div className="w-full grid grid-cols-12 gap-[24px]">
           <div className="col-span-4 flex flex-col gap-[12px] text-[12px]">
             <div className="relative w-full aspect-square">
@@ -58,7 +56,7 @@ export const ModalComponent: FC<Props> = ({ id }) => {
             </div>
             <div className="flex justify-between items-center">
               <Button onClick={() => addTofavorites(movie)}>
-                <StarIcon active={isfavorite} />
+                <StarIcon active={isfavorite(movie)} />
               </Button>
               <p>{movie.year}</p>
             </div>
