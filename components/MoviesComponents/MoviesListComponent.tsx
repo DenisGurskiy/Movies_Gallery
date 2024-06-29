@@ -50,19 +50,22 @@ const MoviesListComponent = () => {
   return (
     <>
       <div className="w-full flex justify-between mb-[12px]">
+        <label className="sr-only" htmlFor="genre">
+          Select genre
+        </label>
         <select
           name="genre"
           id="genre"
           className={classNames(
-            "border-[1px] py-[4px] px-[8px] cursor-pointer outline-none ",
+            "border-[1px] py-[4px] px-[8px] cursor-pointer outline-none",
             {
-              "text-grey": value === "select genre",
+              "text-dark": value === "select genre",
             }
           )}
           value={value}
           onChange={(e) => setValue(e.target.value)}
         >
-          <option value="select genre" className="text-grey">
+          <option value="select genre" className="text-dark">
             select genre
           </option>
           {genresArray.length !== 0 &&
@@ -73,12 +76,13 @@ const MoviesListComponent = () => {
             ))}
         </select>
         <div className="flex gap-[12px] items-center justify-center">
-          <p className="text-[12px] text-grey">view as: </p>
+          <p className="text-[12px] text-dark">view as: </p>
           <button
             className={classNames("border-black", {
               "border-[1px]": viewType === "card",
             })}
             onClick={() => setViewType("card")}
+            title="Change type of view to Card"
           >
             <Image
               src="/cardIcon.png"
@@ -92,6 +96,7 @@ const MoviesListComponent = () => {
               "border-[1px]": viewType === "list",
             })}
             onClick={() => setViewType("list")}
+            title="Change type of view to List"
           >
             <Image
               src="/listIcon.png"

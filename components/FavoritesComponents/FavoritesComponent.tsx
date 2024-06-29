@@ -64,6 +64,7 @@ export default function FavoritesComponent() {
           <button
             className="md:hidden hover:transition hover:scale-125 duration-300"
             onClick={closeMenu}
+            title="Close menu"
           >
             <CloseIcon />
           </button>

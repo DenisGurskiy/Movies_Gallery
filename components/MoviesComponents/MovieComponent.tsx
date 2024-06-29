@@ -92,6 +92,7 @@ export const MovieComponent: FC<Props> = ({ movie, viewType }) => {
             "top-[12px] right-[12px]": viewType === "list",
           })}
           onClick={() => addTofavorites(movie)}
+          title="Add to Favorite List"
         >
           <StarIcon active={isfavorite(movie)} />
         </Button>

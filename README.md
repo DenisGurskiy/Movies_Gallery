@@ -13,10 +13,11 @@ Welcome to React Movies Gallery! This is a single page application built with Re
 
 1. React: JavaScript library for building user interfaces.
 2. React Context API: For state management across the application.
-3. HTML & CSS (Tailwind CSS): For markup and styling.
-4. JavaScript (ES6+): The primary programming language used.
-5. Git: Version control system for tracking changes.
-6. Vercel: Hosting platform for deploying the application.
+3. Next.js: React framework for server-side rendering and static site generation.
+4. HTML & CSS (Tailwind CSS): For markup and styling.
+5. JavaScript (ES6+): The primary programming language used.
+6. Git: Version control system for tracking changes.
+7. Vercel: Hosting platform for deploying the application.
 
 # Installation
 

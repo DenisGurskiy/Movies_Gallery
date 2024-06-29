@@ -55,7 +55,10 @@ export const ModalComponent: FC<Props> = ({ id }) => {
               />
             </div>
             <div className="flex justify-between items-center">
-              <Button onClick={() => addTofavorites(movie)}>
+              <Button
+                onClick={() => addTofavorites(movie)}
+                title="Add to Favorite List"
+              >
                 <StarIcon active={isfavorite(movie)} />
               </Button>
               <p>{movie.year}</p>
@@ -86,6 +89,7 @@ export const ModalComponent: FC<Props> = ({ id }) => {
           <Button
             onClick={() => setDetailedMovie(null)}
             classnames="absolute top-[8px] right-[8px] md:top-[24px] md:right-[24px]"
+            title="View the details of movie"
           >
             <CloseModal />
           </Button>

@@ -24,7 +24,7 @@ export const FavoriteComponent: FC<Props> = ({ favorite }) => {
         </div>
         <h3 className="w-3/4">{favorite.name}</h3>
       </div>
-      <Button onClick={() => deleteFromfavorites(favorite)}>
+      <Button onClick={() => deleteFromfavorites(favorite)} title="Remove from Favorite List">
         <RemoveIcon />
       </Button>
     </li>
