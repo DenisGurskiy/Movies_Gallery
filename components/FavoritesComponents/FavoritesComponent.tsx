@@ -35,8 +35,10 @@ export default function FavoritesComponent() {
     <>
       <header className="fixed top-0 w-full h-[40px] border-b-[1px] border-grey md:hidden flex flex-row-reverse px-[24px] bg-white shadow-md">
         <div className="relative flex gap-[12px] items-center cursor-pointer px-[12px]">
-          <StarIcon active={true} />
-          <button onClick={openMenu}>Favorite List</button>
+          <button onClick={openMenu} className="flex gap-[12px]">
+            <StarIcon active={true} />
+            Favorite List
+          </button>
           {favorites.length !== 0 && (
             <div className="absolute top-[4px] left-[30px] text-[10px] rounded-full bg-blue w-[16px] text-white text-center">
               {favorites.length}
